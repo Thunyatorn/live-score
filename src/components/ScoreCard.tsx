@@ -1,3 +1,5 @@
+import { ScoreGauge } from "./ScoreGauge";
+
 interface IScoreCard {
   name: string;
   score: number;
@@ -5,9 +7,10 @@ interface IScoreCard {
 
 export const ScoreCard = ({ name, score }: IScoreCard) => {
   return (
-    <div className="flex flex-col rounded-lg p-3 shadow-md">
-      <h2 className="text-3xl font-semibold">{name}</h2>
-      <p className="text-2xl">คะแนนรวม : {score}</p>
+    <div className="flex flex-col rounded-lg bg-[#c79dd7] p-4 shadow-md">
+      <h2 className="text-center text-3xl font-semibold">{name}</h2>
+      <ScoreGauge score={score} />
+      <p className="text-center text-xl">{score} point(s)</p>
     </div>
   );
 };
