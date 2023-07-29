@@ -29,7 +29,7 @@ export const ScoreTable = () => {
 
   return (
     <div className="flex w-full justify-center">
-      <div className="mt-14 grid w-3/4 grid-cols-3 justify-center gap-x-10 gap-y-10">
+      <div className="mt-14 grid w-3/4 grid-cols-3 justify-center gap-x-12 gap-y-10">
         {data.map((item, idx) => (
           <ScoreCard key={idx} name={item.name!} score={item.score!} />
         ))}
