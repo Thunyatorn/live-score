@@ -1,4 +1,4 @@
-const full_score: number = 20 * 10;
+const full_score: number = 25 * 20;
 
 // copied from Gean Dev TOI Scoreboard
 function redToGreen(percent: number) {
@@ -9,9 +9,10 @@ function redToGreen(percent: number) {
 
 export const ScoreGauge = ({ score }: { score: number }) => {
   return (
-    <div className="mt-3">
+    <div className="relative mt-3">
+      <div className="absolute h-1.5 w-full rounded-full bg-gray-200" />
       <div
-        className="h-1.5 rounded-full"
+        className="absolute h-1.5 rounded-full"
         style={{
           width: `${(score / full_score) * 100}%`,
           background: redToGreen(score / full_score),
