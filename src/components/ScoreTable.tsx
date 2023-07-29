@@ -20,10 +20,10 @@ export const ScoreTable = () => {
 
     const interval = setInterval(() => {
       axios.get(process.env.NEXT_PUBLIC_API_ROUTE!).then((res) => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setData(res.data.data);
       });
-    }, 3000);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
