@@ -1,5 +1,6 @@
 // import data from "../data/score.json";
 import { ScoreCard } from "./ScoreCard";
+import { SkeletonScoreCard} from "./skeleton/SkeletonScoreCard"
 
 import React, { useState, useEffect, use } from "react";
 import axios from "axios";
@@ -28,6 +29,25 @@ export const ScoreTable = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  if (data.length === 0) {
+    return (
+      <div className="flex w-full justify-center">
+        <div className="mt-14 grid w-3/4 grid-cols-3 justify-center gap-x-12 gap-y-10">
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+          <SkeletonScoreCard />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-full justify-center">
