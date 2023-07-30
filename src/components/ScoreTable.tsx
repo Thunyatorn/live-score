@@ -1,11 +1,7 @@
-// import data from "../data/score.json";
 import { ScoreCard } from "./ScoreCard";
-import { SkeletonScoreCard} from "./skeleton/SkeletonScoreCard"
 
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 interface IContestant {
   name?: string;
@@ -13,50 +9,42 @@ interface IContestant {
 }
 
 export const ScoreTable = () => {
-  const [data, setData] = useState<IContestant[]>([]);
+  let default_contestant_content: IContestant[] = [];
+  const error_value = 192038403233;
+  for (let i = 1; i <= 10; ++i) {
+    default_contestant_content.push({
+      name: "",
+      score: error_value,
+    });
+  }
+  const [data, setData] = useState<IContestant[]>(default_contestant_content);
 
   useEffect(() => {
     axios.get(process.env.NEXT_PUBLIC_API_ROUTE!).then((res) => {
-      // console.log(res.data.data);
       setData(res.data.data);
     });
 
     const interval = setInterval(() => {
       axios.get(process.env.NEXT_PUBLIC_API_ROUTE!).then((res) => {
-        // console.log(res.data.data);
         setData(res.data.data);
       });
+      console.log(data);
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  if (data.length === 0) {
-    return (
-      <div className="flex w-full justify-center">
-        <div className="mt-14 grid w-3/4 grid-cols-3 justify-center gap-x-12 gap-y-10">
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-          <SkeletonScoreCard />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex w-full justify-center">
       <div className="mt-14 grid w-3/4 grid-cols-3 justify-center gap-x-12 gap-y-10">
         {data.map((item, idx) => (
-          <ScoreCard key={idx} name={item.name!} score={item.score!} />
+          <ScoreCard
+            key={idx}
+            name={item.name!}
+            score={item.score!}
+            is_skeleton={item.name === "" && item.score === error_value}
+          />
         ))}
       </div>
     </div>
   );
-
 };
