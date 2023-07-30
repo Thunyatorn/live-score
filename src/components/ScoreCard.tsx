@@ -13,7 +13,7 @@ export const ScoreCard = ({ name, score, is_skeleton }: IScoreCard) => {
         <h2 className="text-center text-3xl font-semibold">{name}</h2>
       ) : (
         <div className="flex justify-center">
-          <div className="mt-3 h-8 w-full animate-pulse rounded-md bg-gray-900"></div>
+          <div className="mt-3 h-8 w-full animate-pulse rounded-md bg-gray-200" />
         </div>
       )}
       <ScoreGauge score={!is_skeleton ? score : 0} />
@@ -21,7 +21,7 @@ export const ScoreCard = ({ name, score, is_skeleton }: IScoreCard) => {
         <p className="mt-3 text-center text-xl">{score} point(s)</p>
       ) : (
         <div className="flex justify-center">
-          <div className="mt-3 h-6 w-1/4 animate-pulse rounded-md bg-gray-900"></div>
+          <div className="mt-3 h-6 w-1/4 animate-pulse rounded-md bg-gray-200" />
         </div>
       )}
     </div>
