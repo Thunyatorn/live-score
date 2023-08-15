@@ -14,7 +14,7 @@ export const ScoreGauge = ({ score }: { score: number }) => {
       <div
         className="absolute h-1.5 rounded-full"
         style={{
-          width: `${(score / full_score) * 100}%`,
+          width: `${(Math.min(score,full_score) / full_score) * 100}%`,
           background: redToGreen(score / full_score),
         }}
       />
