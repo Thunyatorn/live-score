@@ -9,7 +9,7 @@ const ibm_plex_sans_thai = IBM_Plex_Sans_Thai({ weight: ['400', '500', '600', '7
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   // return <Component {...pageProps} />;
-  return <main className={`${inter.className} ${ibm_plex_sans_thai.className} bg-slate-100`}>
+  return <main className={`${inter.className} ${ibm_plex_sans_thai.className} bg-slate-100 dark:bg-slate-900`}>
     <Component {...pageProps} />
   </main>
 };
