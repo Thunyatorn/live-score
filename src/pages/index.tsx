@@ -1,6 +1,9 @@
 import Head from "next/head";
 
 import { ScoreTable } from "../components/ScoreTable";
+import { useState, useEffect } from "react";
+import useTheme from "next-theme/dist/useTheme";
+import { ThemeSwitcher } from "~/components/ThemeSwitcher";
 
 export default function Home() {
   return (
@@ -19,6 +22,7 @@ export default function Home() {
           TUGMOs 20th Live Scoreboard
         </h1>
         <ScoreTable />
+        {/* <ThemeSwitcher /> */}
       </div>
     </>
   );
