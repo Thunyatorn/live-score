@@ -1,4 +1,4 @@
-import { ScoreCard } from "./ScoreCard";
+import { ScoreCard, ScoreCardMobile } from "./ScoreCard";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -35,9 +35,17 @@ export const ScoreTable = () => {
 
   return (
     <div className="flex w-full justify-center">
-      <div className="mt-14 w-3/4 flex flex-wrap justify-center gap-x-12 gap-y-10">
+      <div className="mt-14 flex w-3/4 flex-wrap justify-center gap-x-12 gap-y-10">
         {data.map((item, idx) => (
           <ScoreCard
+            key={idx}
+            name={item.name!}
+            score={item.score!}
+            is_skeleton={item.name === "" && item.score === error_value}
+          />
+        ))}
+        {data.map((item, idx) => (
+          <ScoreCardMobile
             key={idx}
             name={item.name!}
             score={item.score!}

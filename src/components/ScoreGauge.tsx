@@ -3,7 +3,7 @@ const full_score: number = 25 * 20;
 export const ScoreGauge = ({ score }: { score: number }) => {
   return (
     <div className="relative mt-3">
-      <div className="absolute h-1.5 w-full rounded-full bg-gray-50" />
+      <div className="absolute h-1.5 w-full rounded-full bg-gray-50 dark:bg-gray-900" />
       <div
         className="absolute h-1.5 rounded-full bg-purple-500"
         style={{
